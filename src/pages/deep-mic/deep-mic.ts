@@ -49,17 +49,6 @@ export class DeepMicPage {
         // If the volume > 0.1,  a rect is drawn at a random location.
         // The louder the volume, the larger the rectangle.
         var threshold = 0.1;
-        if (volume > threshold) {
-          p.stroke(0);
-          p.fill(0, 100);
-          p.rect(
-            p.random(40, p.width),
-            p.random(p.height),
-            volume * 50,
-            volume * 50
-          );
-        }
-
         console.log(volume);
 
         // Graph the overall potential volume, w/ a line at the threshold
