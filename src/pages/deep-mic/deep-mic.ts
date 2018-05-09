@@ -9,10 +9,7 @@ declare var p5: any;
  * Ionic pages and navigation.
  */
 
-@IonicPage({
-  name: "DeepMicPage",
-  segment: "deep-mic/:id"
-})
+
 @Component({
   selector: "page-deep-mic",
   templateUrl: "deep-mic.html"
@@ -20,13 +17,15 @@ declare var p5: any;
 export class DeepMicPage {
   myp5: any;
   input: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
-
-  ionViewDidLoad() {
-    console.log("ionViewDidLoad DeepMicPage");
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    console.log("custructor DeepMicPage");
   }
 
-  ionViewDidEnter() {
+  // ionViewDidLoad() {
+  //   console.log("ionViewDidLoad DeepMicPage");
+  // }
+
+  ionViewDidLoad() {
     var s = p => {
       p.setup = () => {
         var cnv = p.createCanvas(
@@ -60,7 +59,7 @@ export class DeepMicPage {
           );
         }
 
-        console.log(volume);
+        // console.log(volume);
 
         // Graph the overall potential volume, w/ a line at the threshold
         var y = p.map(volume, 0, 1, p.height, 0);

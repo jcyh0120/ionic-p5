@@ -5,9 +5,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
+import { DeepMicPage } from '../pages/deep-mic/deep-mic';
 @NgModule({
   declarations: [
-    MyApp
+    MyApp,
+    DeepMicPage
   ],
   imports: [
     BrowserModule,
@@ -15,7 +17,8 @@ import { MyApp } from './app.component';
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp
+    MyApp,
+    DeepMicPage
   ],
   providers: [
     StatusBar,
