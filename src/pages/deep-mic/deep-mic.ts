@@ -1,14 +1,19 @@
 import { Component } from "@angular/core";
 import { IonicPage, NavController, NavParams } from "ionic-angular";
+import { Platform } from "ionic-angular";
 
+// import * as p5 from 'p5';
+// import * as p5dom from 'p5/lib/addons/p5.dom';
+// import * as p5sound from 'p5/lib/addons/p5.sound';
+// console.dir(p5);
 declare var p5: any;
+
 /**
  * Generated class for the DeepMicPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-
 
 @Component({
   selector: "page-deep-mic",
@@ -17,28 +22,48 @@ declare var p5: any;
 export class DeepMicPage {
   myp5: any;
   input: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public platform: Platform,
+    public navCtrl: NavController,
+    public navParams: NavParams
+  ) {
     console.log("custructor DeepMicPage");
   }
 
-  // ionViewDidLoad() {
-  //   console.log("ionViewDidLoad DeepMicPage");
-  // }
-
   ionViewDidLoad() {
+    console.log("ionViewDidLoad DeepMicPage");
+  }
+
+  ionViewDidEnter() {}
+
+  ionViewDidLeave() {
+    // this.input.stop();
+    // this.myp5.noLoop();
+  }
+
+  hello() {
     var s = p => {
       p.setup = () => {
+        console.log("p", p);
+
+        console.log("p5", p5);
+
         var cnv = p.createCanvas(
           document.getElementById("micCanvas").clientWidth,
           document.getElementById("micCanvas").clientHeight
         );
         cnv.parent("micCanvas"); // id="myCanvas"と紐づけ
 
-        this.input = new p5.AudioIn(function(e) {
-          console.log("aaaaa", e);
-        });
+        p.getAudioContext().resume();
+        this.input = new p5.AudioIn();
 
         this.input.start();
+        console.log(p.getAudioContext());
+        this.input.start(
+          res => console.log("success", res),
+          res => console.log("error", res)
+        );
+        console.log(p.getAudioContext());
       };
 
       p.draw = () => {
@@ -74,12 +99,7 @@ export class DeepMicPage {
         p.line(0, ythreshold, 19, ythreshold);
       };
     };
-
     this.myp5 = new p5(s);
-  }
-
-  ionViewDidLeave() {
-    this.input.stop();
-    this.myp5.noLoop();
+    console.log("this.myp5", this.myp5);
   }
 }
