@@ -1,12 +1,12 @@
+
 import { Component } from "@angular/core";
 import { IonicPage, NavController, NavParams } from "ionic-angular";
 import { Platform } from "ionic-angular";
 
-// import * as p5 from 'p5';
-// import * as p5dom from 'p5/lib/addons/p5.dom';
-// import * as p5sound from 'p5/lib/addons/p5.sound';
-// console.dir(p5);
-declare var p5: any;
+import p5 from "p5";
+import "p5/lib/addons/p5.dom";
+import "p5/lib/addons/p5.sound";
+
 
 /**
  * Generated class for the DeepMicPage page.
