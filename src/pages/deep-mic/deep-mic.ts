@@ -3,10 +3,7 @@ import { Component } from "@angular/core";
 import { IonicPage, NavController, NavParams } from "ionic-angular";
 import { Platform } from "ionic-angular";
 
-import p5 from "p5";
-import "p5/lib/addons/p5.dom";
-import "p5/lib/addons/p5.sound";
-
+declare var p5: any;
 
 /**
  * Generated class for the DeepMicPage page.
@@ -54,6 +51,7 @@ export class DeepMicPage {
         );
         cnv.parent("micCanvas"); // id="myCanvas"と紐づけ
 
+        // must add this line
         p.getAudioContext().resume();
         this.input = new p5.AudioIn();
 
